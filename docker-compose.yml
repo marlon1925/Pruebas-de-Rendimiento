@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    container_name: aplicacioneWeb2
+    build: 
+      dockerfile: Dockerfile
+    ports:
+      - 5001:5000
+  locust:
+    image: locustio/locust:latest
+    container_name: locust2
+    ports:
+      - 8089:8089
+    volumes:
+      - C:\Users\APP DISTRIBUIDAS\Desktop\Pruebas de Rendimiento:/mnt/locust
+    command: ["-f","/mnt/locust/locustfile.py"]
